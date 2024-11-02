@@ -1,56 +1,71 @@
-/* Reset basic body and heading styles */
-body, h1, h2, h3, h4, h5, h6, p {
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-}
-
-/* Apply Lora for body text */
-body {
-    font-family: 'Lora', serif;
     color: #333;
-    font-size: 16px;
-    line-height: 1.6;
+    background-color: #f4f4f4;
 }
 
-/* Apply Inter for headings */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 700; /* Optional: make headings bold */
-    color: #222;
-}
-
-/* Other styling */
 header {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
     text-align: center;
+}
+
+h1 {
+    font-family: 'Lora', serif;
+    margin: 0;
+}
+
+nav {
+    background: #444;
+    padding: 10px 0;
 }
 
 nav ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    background-color: #444;
 }
 
 nav ul li {
-    margin: 0 15px;
+    display: inline;
+    margin-right: 20px;
 }
 
-nav ul li a {
-    color: white;
+nav a {
+    color: #fff;
     text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
 }
 
 section {
-    padding: 2rem;
+    margin: 20px 0;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h2 {
+    font-family: 'Lora', serif;
 }
 
 footer {
-    background-color: #333;
-    color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
