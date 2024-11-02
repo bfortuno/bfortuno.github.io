@@ -1,15 +1,22 @@
+* {
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
     color: #333;
     background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Set minimum height to cover the full viewport */
 }
 
 header {
-    background: #333;
-    color: #fff;
+    background: #4166af; /* Apply the specified color */
+    color: #fff; /* Text color for contrast */
     padding: 20px 0;
     text-align: center;
 }
@@ -20,7 +27,7 @@ h1 {
 }
 
 nav {
-    background: #444;
+    background: #365a8f; /* A slightly darker shade for the navigation */
     padding: 10px 0;
 }
 
@@ -42,30 +49,31 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
+    color: #f4f4f4; /* Lighter shade on hover for contrast */
 }
 
 main {
+    flex: 1; /* Allow the main section to expand to fill the available space */
     padding: 20px;
 }
 
 section {
     margin: 20px 0;
-    background: #fff;
+    background: #fff; /* White background for content sections */
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
     font-family: 'Lora', serif;
+    color: #4166af; /* Use the specified color for headings */
 }
 
 footer {
     text-align: center;
     padding: 10px 0;
-    background: #333;
+    background: #4166af; /* Match footer with the header */
     color: #fff;
-    position: relative;
-    bottom: 0;
     width: 100%;
 }
