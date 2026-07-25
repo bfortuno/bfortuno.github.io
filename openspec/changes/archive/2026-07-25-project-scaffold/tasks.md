@@ -41,5 +41,5 @@
 
 - [x] 7.1 Run `npm run build` locally and confirm it completes without errors
 - [x] 7.2 Run `npm run dev`, manually check: nav keyboard navigation, responsive layout at 320px, theme toggle (light→dark→reload, no flash of wrong theme), all nav links resolve to a real (stub) page — verified headlessly via Playwright against system Chromium (screenshots + DOM assertions), all checks passed
-- [ ] 7.3 In GitHub repo Settings → Pages, set Source to "GitHub Actions" (manual step, cannot be scripted)
-- [ ] 7.4 Push to `main`, confirm the Actions workflow run succeeds, and confirm the deployed site is reachable at the GitHub Pages URL
+- [x] 7.3 In GitHub repo Settings → Pages, set Source to "GitHub Actions" (manual step, cannot be scripted) — confirmed by user
+- [x] 7.4 Push to `main`, confirm the Actions workflow run succeeds, and confirm the deployed site is reachable at the GitHub Pages URL — confirmed live at <https://bfortuno.github.io/>
