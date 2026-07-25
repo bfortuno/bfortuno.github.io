@@ -1,9 +1,35 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BioPhoto from '../components/BioPhoto.astro';
+import CollaborationCallout from '../components/CollaborationCallout.astro';
+import HighlightLinks from '../components/HighlightLinks.astro';
+
+const highlights = [
+  { label: 'Latest Paper', href: '/publications' },
+  { label: 'Current Project', href: '/projects' },
+  { label: 'CV', href: '/cv' },
+  { label: 'Contact', href: '/contact' },
+];
 ---
 
 <Layout title="Home">
-  <h1>Benjamin I. Fortuno</h1>
-  <p>Coming soon.</p>
-  <!-- TODO(home-page): bio, photo, affiliation, PoliMi-MMI collaboration callout, highlight links -->
+  <section class="hero">
+    <BioPhoto>
+      <h1>Benjamin I. Fortuno</h1>
+      <p class="affiliation">
+        PhD Candidate, Politecnico di Milano — in collaboration with Medical Microinstruments (MMI),
+        Pisa
+      </p>
+      <!-- TODO(bio): replace with a real bio paragraph -->
+      <p>
+        TODO: short bio paragraph introducing Benjamin, his research background, and interests goes
+        here.
+      </p>
+    </BioPhoto>
+  </section>
+
+  <CollaborationCallout />
+
+  <!-- TODO(highlight-links): confirm final labels/targets (see proposal open questions) -->
+  <HighlightLinks items={highlights} />
 </Layout>

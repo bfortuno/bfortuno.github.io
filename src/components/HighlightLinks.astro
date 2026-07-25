@@ -1,0 +1,26 @@
+---
+interface Highlight {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  items: Highlight[];
+}
+
+const { items } = Astro.props;
+---
+
+<nav class="highlight-links" aria-label="Highlights">
+  <ul>
+    {
+      items.map((item) => (
+        <li>
+          <a class="highlight-link" href={item.href}>
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

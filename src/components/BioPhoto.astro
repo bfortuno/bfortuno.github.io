@@ -1,0 +1,16 @@
+---
+interface Props {
+  photoAlt?: string;
+}
+
+const { photoAlt = 'TODO: replace with a photo of Benjamin I. Fortuno' } = Astro.props;
+---
+
+<div class="bio">
+  <div class="bio-photo" role="img" aria-label={photoAlt}>
+    <span class="bio-photo-label">Photo placeholder</span>
+  </div>
+  <div class="bio-text">
+    <slot />
+  </div>
+</div>
