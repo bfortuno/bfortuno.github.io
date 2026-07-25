@@ -1,0 +1,33 @@
+---
+interface Props {
+  bibtex: string;
+}
+
+const { bibtex } = Astro.props;
+---
+
+<div class="bibtex-block">
+  <pre><code>{bibtex}</code></pre>
+  <button type="button" class="bibtex-copy-button">Copy</button>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.bibtex-block').forEach((block) => {
+    const button = block.querySelector<HTMLButtonElement>('.bibtex-copy-button');
+    const code = block.querySelector('code');
+    if (!button || !code) return;
+
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(code.textContent ?? '');
+        const original = button.textContent;
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = original;
+        }, 1500);
+      } catch {
+        // Clipboard API unavailable (e.g. insecure context) - copy silently fails
+      }
+    });
+  });
+</script>

@@ -1,0 +1,35 @@
+---
+interface Author {
+  name: string;
+  affiliations: number[];
+  url?: string;
+}
+
+interface Props {
+  authors: Author[];
+  affiliations: string[];
+}
+
+const { authors, affiliations } = Astro.props;
+---
+
+<div class="authors-bar">
+  <p class="authors-list">
+    {
+      authors.map((author, index) => (
+        <span class="author">
+          {author.url ? <a href={author.url}>{author.name}</a> : <span>{author.name}</span>}
+          <sup>{author.affiliations.join(',')}</sup>
+          {index < authors.length - 1 && ', '}
+        </span>
+      ))
+    }
+  </p>
+  <ol class="affiliations-list">
+    {
+      affiliations.map((affiliation) => (
+        <li>{affiliation}</li>
+      ))
+    }
+  </ol>
+</div>

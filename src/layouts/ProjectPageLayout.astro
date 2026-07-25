@@ -1,0 +1,119 @@
+---
+import Layout from './Layout.astro';
+import AuthorsBar from '../components/AuthorsBar.astro';
+import ResultsStrip from '../components/ResultsStrip.astro';
+import BibtexBlock from '../components/BibtexBlock.astro';
+
+interface Author {
+  name: string;
+  affiliations: number[];
+  url?: string;
+}
+
+interface ResultItem {
+  type: 'image' | 'video';
+  src: string;
+  caption?: string;
+}
+
+interface Props {
+  title: string;
+  authors: Author[];
+  affiliations: string[];
+  heroImage?: string;
+  heroVideo?: string;
+  abstract: string;
+  methodFigure?: { image: string; caption: string };
+  results: ResultItem[];
+  acknowledgements?: string;
+  bibtex?: string;
+}
+
+const {
+  title,
+  authors,
+  affiliations,
+  heroImage,
+  heroVideo,
+  abstract,
+  methodFigure,
+  results,
+  acknowledgements,
+  bibtex,
+} = Astro.props;
+---
+
+<Layout title={title}>
+  <article class="project-page">
+    <header class="project-header">
+      <h1>{title}</h1>
+      <AuthorsBar authors={authors} affiliations={affiliations} />
+    </header>
+
+    <div class="project-hero">
+      {heroImage && <img src={heroImage} alt={`Hero image for ${title}`} />}
+      {
+        heroVideo && (
+          <video class="project-hero-video" src={heroVideo} autoplay muted loop playsinline />
+        )
+      }
+    </div>
+
+    <section class="project-section" aria-labelledby="abstract-heading">
+      <h2 id="abstract-heading">Abstract</h2>
+      <p>{abstract}</p>
+    </section>
+
+    {
+      methodFigure && (
+        <section class="project-section" aria-labelledby="method-heading">
+          <h2 id="method-heading">Method</h2>
+          <figure>
+            <img src={methodFigure.image} alt={methodFigure.caption} />
+            <figcaption>{methodFigure.caption}</figcaption>
+          </figure>
+        </section>
+      )
+    }
+
+    {
+      results.length > 0 && (
+        <section class="project-section" aria-labelledby="results-heading">
+          <h2 id="results-heading">Results</h2>
+          <ResultsStrip items={results} />
+        </section>
+      )
+    }
+
+    {
+      acknowledgements && (
+        <section class="project-section" aria-labelledby="ack-heading">
+          <h2 id="ack-heading">Acknowledgements</h2>
+          <p>{acknowledgements}</p>
+        </section>
+      )
+    }
+
+    {
+      bibtex && (
+        <section class="project-section" aria-labelledby="bibtex-heading">
+          <h2 id="bibtex-heading">BibTeX</h2>
+          <BibtexBlock bibtex={bibtex} />
+        </section>
+      )
+    }
+
+    <div class="project-body">
+      <slot />
+    </div>
+  </article>
+</Layout>
+
+<script>
+  const video = document.querySelector<HTMLVideoElement>('.project-hero-video');
+  if (video && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    video.pause();
+    video.removeAttribute('autoplay');
+    video.loop = false;
+  }
+</script>

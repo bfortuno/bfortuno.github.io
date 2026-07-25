@@ -1,0 +1,30 @@
+---
+interface ResultItem {
+  type: 'image' | 'video';
+  src: string;
+  caption?: string;
+}
+
+interface Props {
+  items: ResultItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="results-strip-wrapper">
+  <div class="results-strip">
+    {
+      items.map((item) => (
+        <figure class="results-item">
+          {item.type === 'image' ? (
+            <img src={item.src} alt={item.caption ?? ''} loading="lazy" />
+          ) : (
+            <video src={item.src} controls playsinline />
+          )}
+          {item.caption && <figcaption>{item.caption}</figcaption>}
+        </figure>
+      ))
+    }
+  </div>
+</div>

@@ -357,3 +357,139 @@ main#main-content {
   margin: 0;
   padding: 0;
 }
+
+/* Project/paper page (Nerfies-style template) */
+.project-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-header {
+  text-align: center;
+}
+
+.authors-bar {
+  margin-top: 0.75rem;
+}
+
+.authors-list {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.author {
+  white-space: nowrap;
+}
+
+.affiliations-list {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+  display: inline-block;
+  text-align: left;
+}
+
+.project-hero img,
+.project-hero video {
+  width: 100%;
+  max-height: 28rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.project-section h2 {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.4rem;
+}
+
+.project-section figure {
+  margin: 0;
+}
+
+.project-section img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+}
+
+.project-section figcaption {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.results-strip-wrapper {
+  position: relative;
+}
+
+.results-strip {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.5rem;
+}
+
+.results-item {
+  flex: 0 0 80%;
+  scroll-snap-align: start;
+  margin: 0;
+}
+
+.results-item img,
+.results-item video {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+@media (min-width: 40rem) {
+  .results-item {
+    flex-basis: 45%;
+  }
+}
+
+/* Hints that the strip scrolls when content overflows the viewport */
+.results-strip-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0.5rem;
+  width: 2.5rem;
+  background: linear-gradient(to right, transparent, var(--bg));
+  pointer-events: none;
+}
+
+.bibtex-block {
+  position: relative;
+}
+
+.bibtex-block pre {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+}
+
+.bibtex-copy-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font: inherit;
+  font-size: 0.8rem;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
+.bibtex-copy-button:hover,
+.bibtex-copy-button:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
