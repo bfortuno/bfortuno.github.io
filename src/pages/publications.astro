@@ -1,9 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PublicationCard from '../components/PublicationCard.astro';
+import TagFilter from '../components/TagFilter.astro';
+import { publications, allTags } from '../lib/publications';
 ---
 
 <Layout title="Publications">
   <h1>Publications</h1>
-  <p>Coming soon.</p>
-  <!-- TODO(publications-page): parse publications.bib / YAML into a filterable, tagged list -->
+
+  <!-- TODO(publications-data): replace src/data/publications.bib with the real publication list -->
+  <TagFilter tags={allTags} />
+
+  <ul class="publications-list">
+    {publications.map((publication) => <PublicationCard publication={publication} />)}
+  </ul>
 </Layout>

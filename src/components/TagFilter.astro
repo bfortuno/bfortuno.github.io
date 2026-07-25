@@ -1,0 +1,38 @@
+---
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+<div class="tag-filter" role="group" aria-label="Filter publications by tag">
+  <button type="button" class="tag-filter-button is-active" data-tag="">All</button>
+  {
+    tags.map((tag) => (
+      <button type="button" class="tag-filter-button" data-tag={tag}>
+        {tag}
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.tag-filter-button');
+  const cards = document.querySelectorAll<HTMLLIElement>('.publication-card');
+
+  function applyFilter(tag: string) {
+    cards.forEach((card) => {
+      const cardTags = (card.dataset.tags ?? '').split('|').filter(Boolean);
+      card.hidden = tag !== '' && !cardTags.includes(tag);
+    });
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.remove('is-active'));
+      button.classList.add('is-active');
+      applyFilter(button.dataset.tag ?? '');
+    });
+  });
+</script>

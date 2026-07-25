@@ -37,20 +37,34 @@ context: |
       to supply the real content/images/PDFs.
 
   Workflow:
-    - Site is built as a sequence of OpenSpec changes, in this order:
-      1. Project scaffold (Astro setup, GH Actions deploy, base layout,
-         nav, footer, dark/light toggle, responsive shell)
-      2. Home page (bio, photo, affiliation, collaboration callout,
+    - Site is built as a sequence of OpenSpec changes, in this order (updated
+      2026-07-25 to insert a reusable Nerfies-style project-page template as
+      its own item before Projects; items 1-2 are already implemented and
+      archived - see openspec/specs/ and openspec/changes/archive/):
+      1. [DONE] Project scaffold (Astro setup, GH Actions deploy, base
+         layout, nav, footer, dark/light toggle, responsive shell)
+      2. [DONE] Home page (bio, photo, affiliation, collaboration callout,
          highlight links)
       3. Publications page (parses publications.bib or structured YAML,
-         filterable/tagged list)
-      4. Projects page (project cards: thesis work, MMI collaboration
-         outputs, open-source tools, side projects)
-      5. CV page (downloadable PDF + optional HTML summary)
-      6. News/updates section (reverse-chronological, Markdown/YAML sourced)
-      7. Interests & contact page (research interests, contact links only,
+         filterable/tagged list). Entries flagged "featured" link out to a
+         dedicated project page built with the item-4 template.
+      4. Reusable project-page template, Nerfies-style (reference:
+         nerfies.github.io / github.com/nerfies/nerfies.github.io, static
+         HTML/CSS/JS, Bulma-based, CC-BY-SA 4.0 - port the structure/spirit
+         in Astro, not the literal Bulma/jQuery code): title + authors +
+         affiliations bar, hero teaser image/video, abstract, method figure,
+         results section (video comparisons or image carousel), optional
+         acknowledgements, copy-able BibTeX block. Content/media supplied via
+         frontmatter/props per instance, not hand-built per paper. Ship one
+         example instance with placeholder content.
+      5. Projects page (project cards: thesis work, MMI collaboration
+         outputs, open-source tools, side projects; links to a project's
+         dedicated item-4 page when it has one)
+      6. CV page (downloadable PDF + optional HTML summary)
+      7. News/updates section (reverse-chronological, Markdown/YAML sourced)
+      8. Interests & contact page (research interests, contact links only,
          no contact form)
-      8. Polish pass (SEO metadata, Open Graph tags, favicon, sitemap,
+      9. Polish pass (SEO metadata, Open Graph tags, favicon, sitemap,
          Lighthouse performance >=90 / accessibility >=95)
     - Each numbered item is its own OpenSpec change: proposal + delta spec +
       design doc + tasks, shown to the user for explicit "approved" before

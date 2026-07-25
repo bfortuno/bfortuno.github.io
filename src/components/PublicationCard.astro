@@ -1,0 +1,61 @@
+---
+import type { PublicationEntry } from '../lib/publications';
+
+interface Props {
+  publication: PublicationEntry;
+}
+
+const { publication } = Astro.props;
+---
+
+<li class="publication-card" data-tags={publication.tags.join('|')}>
+  {
+    publication.thumbnail && (
+      <img
+        class="publication-thumb"
+        src={publication.thumbnail}
+        alt={`Thumbnail for ${publication.title}`}
+        loading="lazy"
+        width="160"
+        height="100"
+      />
+    )
+  }
+  <div class="publication-body">
+    <h3 class="publication-title">{publication.title}</h3>
+    <p class="publication-meta">
+      {publication.authors} — {publication.venue}, {publication.year}
+    </p>
+    {
+      publication.tags.length > 0 && (
+        <ul class="publication-tags">
+          {publication.tags.map((tag) => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+      )
+    }
+    <ul class="publication-links">
+      {publication.pdf && (
+        <li>
+          <a href={publication.pdf}>PDF</a>
+        </li>
+      )}
+      {publication.doi && (
+        <li>
+          <a href={`https://doi.org/${publication.doi}`}>DOI</a>
+        </li>
+      )}
+      {publication.code && (
+        <li>
+          <a href={publication.code}>Code</a>
+        </li>
+      )}
+      {publication.projectPage && (
+        <li>
+          <a href={`/projects/${publication.projectPage}`}>Project Page →</a>
+        </li>
+      )}
+    </ul>
+  </div>
+</li>
