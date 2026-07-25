@@ -1,0 +1,69 @@
+schema: spec-driven
+
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+context: |
+  Project: Personal academic website for Benjamin I. Fortuno, PhD candidate at
+  Politecnico di Milano, working in collaboration with Medical Microinstruments
+  (MMI), Pisa, on control strategies for surgical robotics (currently:
+  trustworthy and robust learning-based robot control for surgical
+  microsurgery). The PoliMi-MMI collaboration must be clearly visible on the
+  site (e.g. a dedicated callout on the home page).
+
+  Tech stack:
+    - Astro (static site generator), TypeScript where applicable
+    - Deployed via GitHub Actions to GitHub Pages (repo is the
+      bfortuno.github.io user/org site, deployed at the domain root)
+    - Content sourced from Markdown / YAML / BibTeX files only - no CMS,
+      no database, no backend
+    - Component-based structure (Astro components / islands as needed)
+
+  Design direction:
+    - Minimalist academic aesthetic
+    - Dark/light mode toggle, single accent color
+    - Responsive, fast-loading
+    - Serif or clean-sans for headings, readable body text
+
+  Coding conventions:
+    - TypeScript for scripts/components where applicable
+    - Semantic HTML, alt text on images, full keyboard navigation
+      (accessibility is a hard requirement, not a polish item)
+    - Component-based structure; avoid one-off inline styles/scripts
+
+  Content rules:
+    - Real content (bio, publications, projects, CV, news, contact links) is
+      unknown/unwritten. Never invent biographical details, publications, or
+      projects. Use clearly marked TODO placeholders instead and ask the user
+      to supply the real content/images/PDFs.
+
+  Workflow:
+    - Site is built as a sequence of OpenSpec changes, in this order:
+      1. Project scaffold (Astro setup, GH Actions deploy, base layout,
+         nav, footer, dark/light toggle, responsive shell)
+      2. Home page (bio, photo, affiliation, collaboration callout,
+         highlight links)
+      3. Publications page (parses publications.bib or structured YAML,
+         filterable/tagged list)
+      4. Projects page (project cards: thesis work, MMI collaboration
+         outputs, open-source tools, side projects)
+      5. CV page (downloadable PDF + optional HTML summary)
+      6. News/updates section (reverse-chronological, Markdown/YAML sourced)
+      7. Interests & contact page (research interests, contact links only,
+         no contact form)
+      8. Polish pass (SEO metadata, Open Graph tags, favicon, sitemap,
+         Lighthouse performance >=90 / accessibility >=95)
+    - Each numbered item is its own OpenSpec change: proposal + delta spec +
+      design doc + tasks, shown to the user for explicit "approved" before
+      any implementation begins. Implement task-by-task. Archive into the
+      living spec only after the user confirms the change works as expected.
+
+# Per-artifact rules (optional)
+rules:
+  proposal:
+    - Scope each proposal to exactly one numbered item from the site-scope
+      sequence in context - do not bundle multiple pages/features together
+    - Explicitly call out any real content (bio, papers, projects, images,
+      PDFs) required from the user as open questions / TODOs, never invented
+  tasks:
+    - Break tasks into small, independently checkable steps suitable for
+      task-by-task implementation with user checkpoints
