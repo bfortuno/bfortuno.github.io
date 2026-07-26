@@ -1,0 +1,48 @@
+# TODO: replace these placeholder cards with the real project list.
+# `detailSlug`, when set, must match an `id` in the `projects` collection
+# (src/content/projects/) - the projects page only links to it if that
+# entry actually exists.
+
+- id: example-card-one
+  title: "Example Project Card One"
+  abstract: >
+    TODO: replace with a real short project abstract. This card links to the
+    example dedicated page from change 4 to prove that link path works.
+  tags:
+    - surgical robotics
+    - control
+  media:
+    type: image
+    src: /projects-grid/example-card-one.svg
+    alt: "Placeholder media for Example Project Card One"
+  links:
+    code: "https://github.com/example/example-card-one"
+    paper: "https://example.org/papers/example-card-one.pdf"
+  detailSlug: example-project
+
+- id: example-card-two
+  title: "Example Project Card Two"
+  abstract: >
+    TODO: replace with a real short project abstract. This card has no
+    dedicated page yet.
+  tags:
+    - open-source
+  media:
+    type: image
+    src: /projects-grid/example-card-two.svg
+    alt: "Placeholder media for Example Project Card Two"
+  links:
+    demo: "https://example.org/demo/example-card-two"
+
+- id: example-card-three
+  title: "Example Project Card Three"
+  abstract: >
+    TODO: replace with a real short project abstract. This card has no links
+    and no dedicated page, to verify the layout stays clean either way.
+  tags:
+    - teleoperation
+    - haptics
+  media:
+    type: image
+    src: /projects-grid/example-card-three.svg
+    alt: "Placeholder media for Example Project Card Three"

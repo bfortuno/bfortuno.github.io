@@ -1,9 +1,16 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const cards = await getCollection('projectCards');
 ---
 
 <Layout title="Projects">
   <h1>Projects</h1>
-  <p>Coming soon.</p>
-  <!-- TODO(projects-page): project cards (thesis work, MMI collaboration outputs, open-source tools, side projects) -->
+
+  <!-- TODO(projects-data): replace src/content/project-cards.yaml with the real project list -->
+  <ul class="project-grid">
+    {cards.map((card) => <ProjectCard {...card.data} />)}
+  </ul>
 </Layout>

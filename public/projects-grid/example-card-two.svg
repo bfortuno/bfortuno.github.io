@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-label="Placeholder media for Example Project Card Two">
+  <rect width="480" height="320" fill="#e8ebef" />
+  <rect x="2" y="2" width="476" height="316" fill="none" stroke="#b9bfc7" stroke-width="3" stroke-dasharray="8 5" />
+  <text x="240" y="168" font-family="sans-serif" font-size="22" fill="#6b7280" text-anchor="middle">Media placeholder 2</text>
+</svg>

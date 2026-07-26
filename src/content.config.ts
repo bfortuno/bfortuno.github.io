@@ -1,6 +1,6 @@
 import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
-import { glob } from 'astro/loaders';
+import { glob, file } from 'astro/loaders';
 
 // Astro 7's content-layer API: `z` is no longer re-exported from
 // 'astro:content' (as older Astro docs show) - it comes from 'astro/zod'.
@@ -45,4 +45,30 @@ const projects = defineCollection({
     }),
 });
 
-export const collections = { projects };
+// Separate from `projects` above: this holds lightweight grid-card metadata
+// for the /projects listing, not full dedicated pages. A card's optional
+// `detailSlug` may reference an id in the `projects` collection - the
+// projects page only renders that link when a matching entry exists there.
+const projectCards = defineCollection({
+  loader: file('src/content/project-cards.yaml'),
+  schema: z.object({
+    title: z.string(),
+    abstract: z.string(),
+    tags: z.array(z.string()).default([]),
+    media: z.object({
+      type: z.enum(['image', 'video']),
+      src: z.string(),
+      alt: z.string(),
+    }),
+    links: z
+      .object({
+        code: z.string().url().optional(),
+        paper: z.string().url().optional(),
+        demo: z.string().url().optional(),
+      })
+      .default({}),
+    detailSlug: z.string().optional(),
+  }),
+});
+
+export const collections = { projects, projectCards };

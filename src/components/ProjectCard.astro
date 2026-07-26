@@ -1,0 +1,72 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title: string;
+  abstract: string;
+  tags: string[];
+  media: { type: 'image' | 'video'; src: string; alt: string };
+  links: { code?: string; paper?: string; demo?: string };
+  detailSlug?: string;
+}
+
+const { title, abstract, tags, media, links, detailSlug } = Astro.props;
+
+// Only link to the dedicated page if a matching entry actually exists in
+// change 4's `projects` collection - a `detailSlug` typo or a not-yet-built
+// page should never produce a dead link.
+let detailHref: string | undefined;
+if (detailSlug) {
+  const projects = await getCollection('projects');
+  if (projects.some((entry) => entry.id === detailSlug)) {
+    detailHref = `/projects/${detailSlug}`;
+  }
+}
+---
+
+<li class="project-card">
+  {
+    media.type === 'image' ? (
+      <img class="project-card-media" src={media.src} alt={media.alt} loading="lazy" />
+    ) : (
+      <video class="project-card-media" src={media.src} controls playsinline />
+    )
+  }
+  <div class="project-card-body">
+    <h3 class="project-card-title">
+      {detailHref ? <a href={detailHref}>{title}</a> : title}
+    </h3>
+    <p class="project-card-abstract">{abstract}</p>
+    {
+      tags.length > 0 && (
+        <ul class="project-card-tags">
+          {tags.map((tag) => (
+            <li>{tag}</li>
+          ))}
+        </ul>
+      )
+    }
+    <ul class="project-card-links">
+      {links.code && (
+        <li>
+          <a href={links.code}>Code</a>
+        </li>
+      )}
+      {links.paper && (
+        <li>
+          <a href={links.paper}>Paper</a>
+        </li>
+      )}
+      {links.demo && (
+        <li>
+          <a href={links.demo}>Demo</a>
+        </li>
+      )}
+      {detailHref && (
+        <li>
+          <a href={detailHref}>Project Page →</a>
+        </li>
+      )}
+    </ul>
+  </div>
+</li>
