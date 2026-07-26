@@ -1,0 +1,24 @@
+---
+import type { Cv } from '../lib/cv';
+
+interface Props {
+  cv: Cv;
+}
+
+const { cv } = Astro.props;
+---
+
+<header class="cv-header">
+  <h1>{cv.name}</h1>
+  <p class="cv-tagline">{cv.tagline}</p>
+  <p class="cv-summary">{cv.summary}</p>
+  <ul class="cv-contact">
+    <li><a href={`mailto:${cv.contact.email}`}>{cv.contact.email}</a></li>
+    <li>{cv.contact.phone}</li>
+    <li>{cv.contact.location}</li>
+    <li><a href={cv.contact.linkedin}>LinkedIn</a></li>
+  </ul>
+  <a class="cv-download" href="/cv/benjamin-fortuno-cv.pdf" download>
+    Download CV (PDF)
+  </a>
+</header>

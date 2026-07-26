@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  meta?: string;
+  highlights: string[];
+}
+
+const { title, subtitle, meta, highlights } = Astro.props;
+---
+
+<article class="cv-entry">
+  <div class="cv-entry-heading">
+    <h3>{title}</h3>
+    {meta && <span class="cv-entry-meta">{meta}</span>}
+  </div>
+  {subtitle && <p class="cv-entry-subtitle">{subtitle}</p>}
+  {
+    highlights.length > 0 && (
+      <ul class="cv-entry-highlights">
+        {highlights.map((highlight) => (
+          <li>{highlight}</li>
+        ))}
+      </ul>
+    )
+  }
+</article>

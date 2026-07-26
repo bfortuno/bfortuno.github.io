@@ -1,0 +1,80 @@
+name: "Benjamín I. Fortuño"
+tagline: "PhD Researcher – Surgical Robotics & Robot Learning"
+summary: >
+  Learning-based autonomy for microsurgical manipulation, integrating control
+  theory, imitation/reinforcement learning, and vision-based perception.
+  Currently deploying real-robot visuomotor policies on the Symani
+  microsurgical robot in collaboration with Medical Microinstruments (MMI).
+
+contact:
+  email: "benjaminignacio.fortuno@polimi.it"
+  phone: "(+39) 344-4276207"
+  location: "Milan, Italy"
+  linkedin: "https://linkedin.com/in/benjamin-fortuno"
+
+education:
+  - institution: "Politecnico di Milano"
+    location: "Milan & Pisa, Italy"
+    degree: "Ph.D. Bioengineering (Co-funded by Medical Microinstruments)"
+    period: "2024 – Present"
+    highlights:
+      - "Architect full training stack (ROS2, Isaac Sim, multi-camera perception, datasets)"
+      - "Safety-aware control under contact constraints for visuomotor policies"
+      - "Teaching Assistant — Medical Robotics & Computer-Aided Surgery Laboratory (Prof. Elena De Momi)"
+  - institution: "Politecnico di Milano"
+    location: "Milan, Italy"
+    degree: "M.Sc. Biomedical Engineering"
+    period: "2022 – 2024"
+    highlights:
+      - "Thesis: Closed-loop adaptive controller with electromagnetic tracking for autonomous transesophageal echocardiography"
+      - "1st place Hospital-based Health Technology Assessment (Humanitas)"
+  - institution: "Pontificia Universidad Católica de Chile"
+    location: "Santiago, Chile"
+    degree: "B.Sc. Electrical Engineering (Automation & Robotics Minor)"
+    period: "2018 – 2022"
+    highlights:
+      - "Teaching Assistant (3 years): Linear Algebra, Calculus, Introduction to Robotics, Advanced Signal Processing"
+
+experience:
+  - role: "Surgical Robotics Researcher"
+    organization: "Medical Microinstruments"
+    period: "Dec 2024 – Present"
+    highlights:
+      - "Developing imitation learning autonomy for the Symani microsurgical robot, building an end-to-end pipeline from demonstration capture to real-robot deployment via the Synaptix platform"
+      - "Added 2 wrist cameras per arm (Misumi tube cameras) with time-synchronized multi-camera capture, achieving 4 ms inter-stream sync for high-fidelity demonstration recording"
+      - "Deployed learned visuomotor policies via Synaptix inference at 50 Hz closed-loop control, reaching 86% task success on needle-handling benchmarks using 300 demonstrations of training"
+  - role: "Research Intern"
+    organization: "Brain–Machine Interfaces Lab"
+    period: "2020 – 2021"
+    highlights:
+      - "First/second-level fMRI analysis and multivariate pattern analysis (MVPA) in Python"
+
+projects:
+  - title: "Autonomous Microsurgical Simulation Framework"
+    highlights:
+      - "Modular Isaac Sim + ROS2 environment for surgical manipulation research"
+      - "Dataset pipelines for imitation and reinforcement learning"
+      - "Reproducible evaluation metrics for precision, stability, and success rate"
+  - title: "Closed-Loop Adaptive Control for Robotic Echocardiography"
+    highlights:
+      - "Adaptive controller with EM-tracking feedback"
+      - "Stable positioning under anatomical motion and disturbances"
+      - "Real-time robust control for surgical guidance"
+
+skills:
+  - category: "Programming"
+    items: ["Python", "C++", "C"]
+  - category: "Robotics / AI"
+    items: ["ROS/ROS2", "Isaac Sim", "OpenCV", "PyTorch", "RL", "IL", "Control"]
+  - category: "Systems"
+    items: ["Docker", "Git", "Linux", "MATLAB"]
+  - category: "CAD / Hardware"
+    items: ["Fusion 360", "Eagle", "PCB design"]
+
+languages:
+  - name: "Spanish"
+    level: "Native"
+  - name: "English"
+    level: "Professional"
+  - name: "Italian"
+    level: "Conversational"

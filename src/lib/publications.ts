@@ -1,10 +1,15 @@
 import { parse } from '@retorquere/bibtex-parser';
 import bibSource from '../data/publications.bib?raw';
 
+export interface AuthorName {
+  name: string;
+  isSelf: boolean;
+}
+
 export interface PublicationEntry {
   key: string;
   title: string;
-  authors: string;
+  authors: AuthorName[];
   venue: string;
   year: string;
   tags: string[];
@@ -16,17 +21,25 @@ export interface PublicationEntry {
   projectPage?: string;
 }
 
-function formatAuthors(author: unknown): string {
-  if (!Array.isArray(author)) return '';
-  return author
-    .map((a) => {
-      if (a && typeof a === 'object' && ('firstName' in a || 'lastName' in a)) {
-        const { firstName, lastName } = a as { firstName?: string; lastName?: string };
-        return [firstName, lastName].filter(Boolean).join(' ');
-      }
-      return String(a);
-    })
-    .join(', ');
+// Matches on "Fortuño" alone since the site owner's name is split
+// inconsistently across name-list fields depending on how each source
+// record ordered it (e.g. "Jara, Benjamín Ignacio Fortuño" vs.
+// "Fortuño Jara, Benjamín Ignacio") - this substring is present in every
+// variant regardless of where the name gets split into first/last.
+const SELF_NAME_MATCH = 'fortuño';
+
+function formatAuthors(author: unknown): AuthorName[] {
+  if (!Array.isArray(author)) return [];
+  return author.map((a) => {
+    let name: string;
+    if (a && typeof a === 'object' && ('firstName' in a || 'lastName' in a)) {
+      const { firstName, lastName } = a as { firstName?: string; lastName?: string };
+      name = [firstName, lastName].filter(Boolean).join(' ');
+    } else {
+      name = String(a);
+    }
+    return { name, isSelf: name.toLowerCase().includes(SELF_NAME_MATCH) };
+  });
 }
 
 function parseTags(tags: unknown): string[] {

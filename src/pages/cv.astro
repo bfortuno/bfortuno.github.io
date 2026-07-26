@@ -1,9 +1,74 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CvHeader from '../components/CvHeader.astro';
+import CvEntryCard from '../components/CvEntryCard.astro';
+import { cv } from '../lib/cv';
 ---
 
 <Layout title="CV">
-  <h1>CV</h1>
-  <p>Coming soon.</p>
-  <!-- TODO(cv-page): downloadable CV PDF + optional HTML summary of education/experience/skills -->
+  <CvHeader cv={cv} />
+
+  <section class="cv-section" aria-labelledby="education-heading">
+    <h2 id="education-heading">Education</h2>
+    {
+      cv.education.map((entry) => (
+        <CvEntryCard
+          title={entry.institution}
+          subtitle={entry.degree}
+          meta={`${entry.period} · ${entry.location}`}
+          highlights={entry.highlights}
+        />
+      ))
+    }
+  </section>
+
+  <section class="cv-section" aria-labelledby="experience-heading">
+    <h2 id="experience-heading">Experience</h2>
+    {
+      cv.experience.map((entry) => (
+        <CvEntryCard
+          title={entry.role}
+          subtitle={entry.organization}
+          meta={entry.period}
+          highlights={entry.highlights}
+        />
+      ))
+    }
+  </section>
+
+  <section class="cv-section" aria-labelledby="projects-heading">
+    <h2 id="projects-heading">Selected Projects</h2>
+    {cv.projects.map((project) => <CvEntryCard title={project.title} highlights={project.highlights} />)}
+  </section>
+
+  <section class="cv-section" aria-labelledby="skills-heading">
+    <h2 id="skills-heading">Technical Skills</h2>
+    <dl class="cv-skills">
+      {
+        cv.skills.map((group) => (
+          <>
+            <dt>{group.category}</dt>
+            <dd>{group.items.join(', ')}</dd>
+          </>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="cv-section" aria-labelledby="languages-heading">
+    <h2 id="languages-heading">Languages</h2>
+    <ul class="cv-languages">
+      {
+        cv.languages.map((language) => (
+          <li>
+            {language.name} — {language.level}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <p class="cv-publications-link">
+    See the full list of publications on the <a href="/publications">Publications page</a>.
+  </p>
 </Layout>
