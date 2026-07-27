@@ -3,33 +3,55 @@ import Layout from '../layouts/Layout.astro';
 import BioPhoto from '../components/BioPhoto.astro';
 import CollaborationCallout from '../components/CollaborationCallout.astro';
 import HighlightLinks from '../components/HighlightLinks.astro';
+import PublicationCard from '../components/PublicationCard.astro';
+import { publications } from '../lib/publications';
+import { NEARLAB_URL, POLIMI_URL, MMI_URL } from '../lib/links';
 
 const highlights = [
   { label: 'Latest Paper', href: '/publications', icon: 'paper' as const },
-  { label: 'Current Project', href: '/projects', icon: 'project' as const },
+  { label: 'Research Lab', href: NEARLAB_URL, icon: 'project' as const },
   { label: 'CV', href: '/cv', icon: 'cv' as const },
   { label: 'Contact', href: '/contact', icon: 'contact' as const },
 ];
+
+const featuredPub = publications.find((pub) => pub.featured) ?? publications[0];
 ---
 
 <Layout title="Home">
   <section class="hero">
     <BioPhoto photoSrc="/images/benjamin-fortuno.png">
-      <h1>Benjamin I. Fortuno</h1>
-      <p class="affiliation">
-        PhD Candidate, Politecnico di Milano — in collaboration with Medical Microinstruments (MMI),
-        Pisa
-      </p>
-      <!-- TODO(bio): replace with a real bio paragraph -->
+      <h1 class="hero-name">Benjamin I. Fortuno</h1>
       <p>
-        TODO: short bio paragraph introducing Benjamin, his research background, and interests goes
-        here.
+        I'm a PhD candidate in Bioengineering at <a href={POLIMI_URL}>Politecnico di Milano</a>
+        (<a href={NEARLAB_URL}>NearLab</a>, DEIB), advised by Prof. Elena De Momi, in collaboration
+        with <a href={MMI_URL}>Medical Microinstruments (MMI)</a>. My research explores how robots
+        can learn to operate safely and autonomously during microsurgery — combining imitation
+        learning, perception, and control theory to make surgical robots like the Symani Surgical
+        System more capable and more trustworthy. I'm especially interested in the boundary
+        between what a learned policy can safely do on its own and when it should hand control
+        back to a surgeon.
+      </p>
+      <p>
+        Originally from Chile and now based in Pisa, Italy, I'm also drawn to the entrepreneurial
+        side of surgical robotics, and to building tools and ideas that connect research with
+        real-world impact. Outside the lab, you'll usually find me traveling, training, cooking,
+        or working on my next side project.
       </p>
     </BioPhoto>
   </section>
 
   <CollaborationCallout />
 
-  <!-- TODO(highlight-links): confirm final labels/targets (see proposal open questions) -->
   <HighlightLinks items={highlights} />
+
+  {
+    featuredPub && (
+      <section aria-labelledby="latest-pub-heading">
+        <h2 id="latest-pub-heading">Latest Publication</h2>
+        <ul class="publications-list">
+          <PublicationCard publication={featuredPub} />
+        </ul>
+      </section>
+    )
+  }
 </Layout>

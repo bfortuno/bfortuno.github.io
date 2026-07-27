@@ -19,7 +19,7 @@ const { items } = Astro.props;
     {
       items.map((item) => (
         <li>
-          <a class="highlight-link" href={item.href}>
+          <a class="btn btn-outline highlight-link" href={item.href}>
             {item.icon && <Icon name={item.icon} class="highlight-link-icon" />}
             {item.label}
           </a>

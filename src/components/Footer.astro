@@ -1,10 +1,16 @@
 ---
+import { cv } from '../lib/cv';
+import { NEARLAB_URL } from '../lib/links';
+
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
   <p>&copy; {year} Benjamin I. Fortuno.</p>
   <ul class="footer-links">
-    <!-- TODO(contact-page): populate with email/ORCID/Google Scholar/LinkedIn/GitHub links -->
+    <!-- TODO(contact-page): add ORCID/Google Scholar/GitHub once change 8 (Interests & Contact) is built -->
+    <li><a href={`mailto:${cv.contact.email}`}>Email</a></li>
+    <li><a href={cv.contact.linkedin}>LinkedIn</a></li>
+    <li><a href={NEARLAB_URL}>NEARLab</a></li>
   </ul>
 </footer>

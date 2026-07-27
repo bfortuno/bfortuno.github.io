@@ -9,7 +9,7 @@ const { cv } = Astro.props;
 ---
 
 <header class="cv-header">
-  <h1>{cv.name}</h1>
+  <h1 class="hero-name">{cv.name}</h1>
   <p class="cv-tagline">{cv.tagline}</p>
   <p class="cv-summary">{cv.summary}</p>
   <ul class="cv-contact">
@@ -18,7 +18,7 @@ const { cv } = Astro.props;
     <li>{cv.contact.location}</li>
     <li><a href={cv.contact.linkedin}>LinkedIn</a></li>
   </ul>
-  <a class="cv-download" href="/cv/benjamin-fortuno-cv.pdf" download>
+  <a class="btn btn-outline cv-download" href="/cv/benjamin-fortuno-cv.pdf" download>
     Download CV (PDF)
   </a>
 </header>

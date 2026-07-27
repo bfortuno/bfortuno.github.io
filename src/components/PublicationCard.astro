@@ -39,7 +39,7 @@ const { publication } = Astro.props;
       publication.tags.length > 0 && (
         <ul class="publication-tags">
           {publication.tags.map((tag) => (
-            <li>{tag}</li>
+            <li class="chip">{tag}</li>
           ))}
         </ul>
       )

@@ -1,12 +1,15 @@
 ---
+import { NEARLAB_URL, POLIMI_URL, MMI_URL } from '../lib/links';
 ---
 
 <section class="collab-callout" aria-labelledby="collab-heading">
   <h2 id="collab-heading">PoliMi &times; MMI Collaboration</h2>
   <p>
     <!-- TODO(collab-copy): confirm final wording for the collaboration description -->
-    This research is carried out in collaboration with Medical Microinstruments (MMI), Pisa, as
-    part of doctoral work at Politecnico di Milano on trustworthy and robust learning-based robot
-    control for surgical microsurgery.
+    This research is carried out in collaboration with{' '}
+    <a href={MMI_URL}>Medical Microinstruments (MMI)</a>, Pisa, as part of doctoral work at{' '}
+    <a href={POLIMI_URL}>Politecnico di Milano</a> on trustworthy and robust learning-based robot
+    control for surgical microsurgery. Learn more about the research at{' '}
+    <a href={NEARLAB_URL}>NEARLab</a>.
   </p>
 </section>

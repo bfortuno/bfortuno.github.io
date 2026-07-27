@@ -1,7 +1,43 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(command -v gh)",
+      "Bash(gh auth *)",
+      "Skill(opsx:archive)",
+      "Skill(opsx:archive:*)",
+      "Skill(opsx:sync)",
+      "Skill(opsx:sync:*)",
+      "Bash(openspec archive *)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d['template']\\)\")",
+      "Bash(python3 -c ' *)",
+      "Bash(node -e \"console.log\\(Object.keys\\(require\\('astro/package.json'\\).exports\\).filter\\(k=>k.includes\\('zod'\\)||k.includes\\('content'\\)\\)\\)\")",
+      "Bash(node -e \"console.log\\(require.resolve\\('zod/package.json'\\)\\)\")",
+      "Bash(node -e \"console.log\\(require\\('astro/package.json'\\).exports['./zod']\\)\")",
+      "Bash(node -e \"console.log\\(require\\('astro/package.json'\\).exports['./loaders']\\)\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d['artifacts']\\)\")",
+      "Bash(git -C /home/bfortuno/Documents/PhD/bfortuno.github.io mv \"BIFortuno-Resume.pdf\" \"public/cv/benjamin-fortuno-cv.pdf\")",
+      "Bash(astro dev *)",
+      "Bash(npx astro *)",
+      "Bash(npx --no-install playwright --version)",
+      "Bash(mkdir -p /tmp/claude-1000/-home-bfortuno-Documents-PhD-bfortuno-github-io/894982b4-6df4-4eb0-951c-77868287d0ef/scratchpad/screens)",
+      "Bash(chromium --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=1440,2200 --screenshot=home-light.png \"http://localhost:4321/\")",
+      "Bash(chromium --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=1440,900 --screenshot=home-footer-check.png \"http://localhost:4321/\")",
+      "Bash(chromium --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=1440,900 --force-color-profile=srgb --force-prefers-color-scheme=dark --screenshot=home-dark.png \"http://localhost:4321/\")",
+      "Bash(chromium --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=1440,1000 --screenshot=home-full.png \"http://localhost:4321/\")",
+      "Bash(chromium --version)",
+      "Bash(chromium --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=1440,1000 --blink-settings=preferredColorScheme=2 --screenshot=home-dark2.png \"http://localhost:4321/\")",
+      "Bash(chromium --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=1440,1000 --remote-debugging-port=9333 --remote-allow-origins=* about:blank)",
+      "Bash(curl -s http://localhost:9333/json/version)",
+      "Bash(chromium --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=1440,1000 --remote-debugging-port=9333 \"--remote-allow-origins=*\" about:blank)",
+      "Bash(curl -s http://localhost:9333/json/list)",
+      "Bash(node cdp-shot.mjs \"http://localhost:4321/\" screens/home-dark3.png dark)",
+      "Bash(node cdp-shot.mjs \"http://localhost:4321/projects/example-project\" \"screens/project-detail-light.png\" light)",
+      "Bash(node -e ' *)",
+      "Bash(node cdp-shot.mjs \"http://localhost:4321/\" \"screens/home-mobile.png\" light 390)",
+      "Bash(pkill -f \"remote-debugging-port=9333\")"
     ]
   }
 }
