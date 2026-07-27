@@ -1,0 +1,16 @@
+# TODO: replace these placeholder entries with your real news/updates list.
+# Entries are deliberately out of chronological order here to prove the
+# rendered page sorts them, rather than relying on file order.
+
+- id: example-news-two
+  date: "2026-01-10"
+  text: "TODO: replace with a real update, e.g. a talk given at a conference or workshop."
+
+- id: example-news-three
+  date: "2025-09-01"
+  text: "TODO: replace with a real update, e.g. a milestone reached in the PhD or MMI collaboration."
+
+- id: example-news-one
+  date: "2026-03-15"
+  text: "TODO: replace with a real update, e.g. a paper accepted for publication."
+  link: "https://example.org/announcement"

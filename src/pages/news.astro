@@ -1,9 +1,19 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import NewsEntry from '../components/NewsEntry.astro';
+
+const entries = await getCollection('news');
+const sorted = entries
+  .map((entry) => entry.data)
+  .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 ---
 
 <Layout title="News">
   <h1>News</h1>
-  <p>Coming soon.</p>
-  <!-- TODO(news-section): reverse-chronological updates sourced from Markdown/YAML -->
+
+  <!-- TODO(news-data): replace src/content/news.yaml with the real updates list -->
+  <ul class="news-list">
+    {sorted.map((entry) => <NewsEntry {...entry} />)}
+  </ul>
 </Layout>

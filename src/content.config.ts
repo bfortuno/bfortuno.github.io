@@ -71,4 +71,13 @@ const projectCards = defineCollection({
   }),
 });
 
-export const collections = { projects, projectCards };
+const news = defineCollection({
+  loader: file('src/content/news.yaml'),
+  schema: z.object({
+    date: z.string(),
+    text: z.string(),
+    link: z.string().url().optional(),
+  }),
+});
+
+export const collections = { projects, projectCards, news };

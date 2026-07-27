@@ -694,3 +694,30 @@ main#main-content {
 .cv-publications-link {
   color: var(--text-muted);
 }
+
+/* News page */
+.news-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.news-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+}
+
+.news-entry-date {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.news-entry-text {
+  margin: 0;
+}
