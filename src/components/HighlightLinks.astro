@@ -1,7 +1,10 @@
 ---
+import Icon from './Icon.astro';
+
 interface Highlight {
   label: string;
   href: string;
+  icon?: 'contact' | 'cv' | 'github' | 'linkedin' | 'paper' | 'project' | 'scholar';
 }
 
 interface Props {
@@ -17,6 +20,7 @@ const { items } = Astro.props;
       items.map((item) => (
         <li>
           <a class="highlight-link" href={item.href}>
+            {item.icon && <Icon name={item.icon} class="highlight-link-icon" />}
             {item.label}
           </a>
         </li>

@@ -5,10 +5,10 @@ import CollaborationCallout from '../components/CollaborationCallout.astro';
 import HighlightLinks from '../components/HighlightLinks.astro';
 
 const highlights = [
-  { label: 'Latest Paper', href: '/publications' },
-  { label: 'Current Project', href: '/projects' },
-  { label: 'CV', href: '/cv' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Latest Paper', href: '/publications', icon: 'paper' as const },
+  { label: 'Current Project', href: '/projects', icon: 'project' as const },
+  { label: 'CV', href: '/cv', icon: 'cv' as const },
+  { label: 'Contact', href: '/contact', icon: 'contact' as const },
 ];
 ---
 

@@ -1,0 +1,23 @@
+---
+// Inlines the raw SVG markup (rather than <img src>) so `currentColor`
+// picks up the surrounding text color and the icon adapts to light/dark
+// automatically, with no separate per-theme asset files.
+const icons = import.meta.glob<string>('../icons/*.svg', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+
+interface Props {
+  name: 'contact' | 'cv' | 'github' | 'linkedin' | 'paper' | 'project' | 'scholar';
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+const svg = icons[`../icons/${name}.svg`];
+if (!svg) {
+  throw new Error(`Icon "${name}" not found in src/icons/`);
+}
+---
+
+<span class:list={['icon', className]} set:html={svg} />
