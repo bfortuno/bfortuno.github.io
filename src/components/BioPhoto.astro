@@ -1,15 +1,22 @@
 ---
 interface Props {
+  photoSrc?: string;
   photoAlt?: string;
 }
 
-const { photoAlt = 'TODO: replace with a photo of Benjamin I. Fortuno' } = Astro.props;
+const { photoSrc, photoAlt = 'Photo of Benjamin I. Fortuno' } = Astro.props;
 ---
 
 <div class="bio">
-  <div class="bio-photo" role="img" aria-label={photoAlt}>
-    <span class="bio-photo-label">Photo placeholder</span>
-  </div>
+  {
+    photoSrc ? (
+      <img class="bio-photo-img" src={photoSrc} alt={photoAlt} width="200" height="200" />
+    ) : (
+      <div class="bio-photo" role="img" aria-label={photoAlt}>
+        <span class="bio-photo-label">Photo placeholder</span>
+      </div>
+    )
+  }
   <div class="bio-text">
     <slot />
   </div>
